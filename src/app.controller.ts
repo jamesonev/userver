@@ -14,4 +14,9 @@ export class AppController {
   getBalances(@Param('address') address: string) {
     return this.alchemyService.getBalances(address);
   }
+
+  @Get('prices')
+  getPrices(){
+    return this.alchemyService.getPrices()
+  }
 }

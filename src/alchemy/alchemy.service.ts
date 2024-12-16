@@ -34,4 +34,8 @@ export class AlchemyService {
       contractAddresses: ['0x2615a94df961278DcbC41Fb0a54fEc5f10a693aE'],
     });
   }
+
+  async getPrices() {
+    return await this.client.prices.getTokenPriceBySymbol(['ETH', 'XRP'])
+  }
 }
