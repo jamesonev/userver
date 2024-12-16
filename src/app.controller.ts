@@ -1,18 +1,9 @@
 import { Controller, Get, Param } from '@nestjs/common';
-import { AppService } from './app.service';
 import { AlchemyService } from './alchemy/alchemy.service';
 
 @Controller()
 export class AppController {
-  constructor(
-    private readonly appService: AppService,
-    private readonly alchemyService: AlchemyService,
-  ) {}
-
-  @Get()
-  getHello(): string {
-    return this.appService.getHello();
-  }
+  constructor(private readonly alchemyService: AlchemyService) {}
 
   @Get('history/:address')
   getOrders(@Param('address') address: string) {
