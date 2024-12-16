@@ -23,6 +23,10 @@ To start, let's add an endpoint that returns the different assets in a user's wa
 
 The first step was to figure out where the assets we are interacting with are. uAsset has several contracts listed as deployed on Base, and so I used basescan to find one them and find an address that has an active uAsset balance. The address I found and used for development is 0x4389a1daD94287357e59a2e888905FeF2f213bEb. Once I had an address, I modified the alchemy config to match the params needed (contract for uXRP on Base with address 0x2615a94df961278DcbC41Fb0a54fEc5f10a693aE).
 
+I wanted to include price data, since users love it and it will help build a Dutch Order for trading. Also, if view the commit that added the price feature, you can see how easy it is to add an endpoint using this framework, since Nest handles all the routing internals and just invokes the Alchemy Service which has already been configured and instantiated. 
+
+With that, users can plug in their wallet and view their uAsset (uXRP) balances, order history, and can use the provided information to create a Dutch Order.
+
 # Getting Started
 
 ## Installation
@@ -52,6 +56,8 @@ Once the server is running, you can interact with the API using curl.
 curl localhost:3000/balances/0x4389a1daD94287357e59a2e888905FeF2f213bEb
 ```
 the `balances` can be replaced with `history`. Any address can be provided, as the API passes the address to alchemy and returns the provided response.
+
+Price information is available at `/prices`.
 
 ## Test
 
